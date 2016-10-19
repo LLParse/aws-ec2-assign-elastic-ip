@@ -93,7 +93,8 @@ def _assign_address(instance_id, address):
             # EC2 VPC association
             connection.associate_address(
                 instance_id,
-                allocation_id=address.allocation_id)
+                allocation_id=address.allocation_id,
+                allow_reassociation=False)
     except Exception as error:
         logger.error('Failed to associate {0} with {1}. Reason: {2}'.format(
             instance_id, address.public_ip, error))
